@@ -17,6 +17,10 @@ import java.util.List;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
     private List<CategoriesEntity> categoriesEntities;
 
+    public CategoryAdapter(List<CategoriesEntity> categories){
+        categoriesEntities = categories;
+    }
+
     @NonNull
     @Override
     public CategoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

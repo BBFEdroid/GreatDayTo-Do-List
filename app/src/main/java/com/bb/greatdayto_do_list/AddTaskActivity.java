@@ -15,5 +15,7 @@ public class AddTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityAddTaskBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.addTaskBtnBack.setOnClickListener( v -> finish());
     }
 }

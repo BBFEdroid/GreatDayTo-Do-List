@@ -18,8 +18,8 @@ public interface TaskDao {
     @Query("SELECT * FROM task WHERE task_id IN (:taskId)")
     List<TaskEntity> loadAllByIds(int[] taskId);
 
-    @Query("SELECT * FROM task WHERE  task_id")
-    TaskEntity findById(String task_id);
+//    @Query("SELECT * FROM task WHERE  task_id")
+//    TaskEntity findById(String task_id);
 
     @Query("UPDATE task SET task_start = :taskStart, task_end = :taskEnd, task_title = :taskTitle, task_categories = :taskCategories, task_desc = :taskDesc WHERE task_id= :taskId")
     void updateAnExistingRow(int taskId, String taskStart, String taskEnd, String taskTitle, String taskCategories, String taskDesc);

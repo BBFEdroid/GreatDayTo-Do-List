@@ -1,10 +1,13 @@
 package com.bb.greatdayto_do_list;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
 
 import android.os.Bundle;
 
 import com.bb.greatdayto_do_list.dao.CategoriesDao;
+import com.bb.greatdayto_do_list.database.AppDatabase;
 import com.bb.greatdayto_do_list.databinding.ActivityAddCategoryBinding;
 import com.bb.greatdayto_do_list.entity.CategoriesEntity;
 import com.google.android.material.textfield.TextInputEditText;
@@ -15,7 +18,6 @@ import java.util.Objects;
 public class AddCategoryActivity extends AppCompatActivity {
     private ActivityAddCategoryBinding binding;
 
-    String categoryIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,38 +27,19 @@ public class AddCategoryActivity extends AppCompatActivity {
 
         binding.addCatBtnBack.setOnClickListener( v -> finish());
 
-//        binding.addCatBtnSubmit.setOnClickListener( v -> saveCategory());
+        binding.addCatBtnSubmit.setOnClickListener( v -> saveCategory());
 
     }
 
-//    private void saveCategory() {
-//        CategoriesEntity categoriesEntity = new CategoriesEntity();
-//        categoriesEntity.setCategories_name(Objects.requireNonNull(binding.addCatNameField.getText()).toString());
-//        CategoriesDao categoriesDao = new CategoriesDao() {
-//            @Override
-//            public List<CategoriesEntity> getAll() {
-//                return null;
-//            }
-//
-//            @Override
-//            public CategoriesEntity findById(String categories_id) {
-//                return null;
-//            }
-//
-//            @Override
-//            public void updateAnExistingRow(int categoriesId, String categoriesName, String categoriesIcon) {
-//
-//            }
-//
-//            @Override
-//            public void insertAll(CategoriesEntity... categoriesEntities) {
-//
-//            }
-//
-//            @Override
-//            public void delete(CategoriesEntity categoriesEntity) {
-//
-//            }
-//        };
-//    }
+    private void saveCategory() {
+        CategoriesEntity categoriesEntity = new CategoriesEntity(Objects.requireNonNull(binding.addCatNameField.getText()).toString(),"test_icon");
+        AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(),AppDatabase.class, "local_db").allowMainThreadQueries().build();
+        appDatabase.categoriesDao().insert(categoriesEntity);
+
+
+    }
+
+    public interface setRefreshListener {
+        void refresh();
+    }
 }

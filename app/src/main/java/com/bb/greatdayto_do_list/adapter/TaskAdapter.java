@@ -30,7 +30,7 @@ public class TaskAdapter extends  RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextInputEditText
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -2,6 +2,7 @@ package com.bb.greatdayto_do_list.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
@@ -15,8 +16,16 @@ public class CategoriesEntity implements Serializable {
     @ColumnInfo(name = "categories_icon")
     String categories_icon;
 
-    public CategoriesEntity(){
+    public CategoriesEntity(int categories_id, String categories_name, String categories_icon){
+        this.categories_id=categories_id;
+        this.categories_name=categories_name;
+        this.categories_icon=categories_icon;
+    }
 
+    @Ignore
+    public CategoriesEntity(String categories_name, String categories_icon){
+        this.categories_name=categories_name;
+        this.categories_icon=categories_icon;
     }
 
     public int getCategories_id() {
